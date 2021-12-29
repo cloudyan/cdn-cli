@@ -1,0 +1,38 @@
+{
+  "name": "@deepjs/cdn-cli",
+  "version": "0.0.1",
+  "description": "上传资源或部署站点到 cdn",
+  "type": "module",
+  "main": "./bin/index.mjs",
+  "module": "./bin/index.mjs",
+  "bin": {
+    "cdn-cli": "./bin/index.mjs",
+    "cdn": "./bin/index.mjs"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cdn"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ali-oss": "6.16.0",
+    "chalk": "5.0.0",
+    "co": "4",
+    "commander": "8.3.0",
+    "dir-glob": "3.0.1",
+    "download": "8.0.0",
+    "fs-extra": "10.0.0",
+    "glob": "7.2.0",
+    "handlebars": "4.7.7",
+    "inquirer": "8.2.0",
+    "lodash-es": "4.17.21",
+    "log-symbols": "5.1.0",
+    "ora": "6.0.1",
+    "qiniu": "7.4.0",
+    "update-notifier": "5.1.0"
+  }
+}

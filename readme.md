@@ -2,14 +2,10 @@
 
 功能列表
 
-- `upgrade` 升级
-  - `select` 选择上传空间
-- `upload <src_dir> <target_dir>` 上传 src 资源到 target
-- `deploy <src_dir> <target_dir>` 发布站点
-- `init`
-- `config`
-  - ls
-  - add
-  - set
-  - del
-  - use
+配置从环境变量里取
+
+- `update` 升级
+  - `select` 选择上传空间，可多选
+- `deploy [--site] [source] [target]` 将选中目录中的文件按当前项目结构上传到目标文件夹
+  - 限制上传文件到根目录（但不限制上传目录到根目录）
+  - `--site` 为部署站点模式

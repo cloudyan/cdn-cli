@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>测试资源加载时间</title>
+    <!-- link -->
+    <link rel="stylesheet" href="./static/css/style.css" />
+  </head>
+  <body>
+    <h1>Loading...</h1>
+    <!-- font -->
+    <h2 class="myfont" title="自定义字体">1234567890</h2>
+    <!-- img -->
+    <img class="image" src="./static/img/resource-timing.png" />
+    <!-- svg 同 img -->
+    <!-- <img src="./static/svg/resource-timing.svg" /> -->
+
+    <button id="getResourceTiming">获取资源加载时间</button>
+    <p>给出一个资源加载的log 数据，分析优化方案</p>
+    <ul>
+      <li>当前页面1</li>
+      <li>当前资源节点位置</li>
+    </ul>
+
+    <!-- script -->
+    <script type="module" src="./static/js/index.js"></script>
+    <script type="module">
+      // import { getResourceTiming } from '../../sdk/performance/resource-timing.js';
+      // import '../usage.js';
+
+      // const logData = () => {
+      //   getResourceTiming(data => {
+      //     console.log(JSON.stringify(data, null, 2));
+      //   }, {debug: true});
+      // }
+
+      // const domBtn = document.getElementById('getResourceTiming');
+
+      // domBtn.addEventListener('click', logData);
+      // window.addEventListener('unload', logData, false);
+
+      // document.addEventListener('visibilitychange', function() {
+      //   if (document.visiblityState === 'hidden') {
+      //     // var sessionData = buildSessionReport();
+      //     // navigator.sendBeacon(`${reportUrl}/log`, sessionData);
+      //   }
+      // });
+    </script>
+    <script type="module" src="./static/js/render-after-error.js"></script>
+  </body>
+</html>
