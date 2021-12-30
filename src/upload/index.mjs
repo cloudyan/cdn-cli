@@ -23,15 +23,19 @@ export async function upload(files) {
     const auth = config.auths[env];
     const uploadAdapter = uploadAdapters[auth.type];
     const adapter = new uploadAdapter(auth);
-    const uploader = new Upload(adapter, files, config);
-    return uploader.uploadFiles(files);
+    const uploader = new Upload(adapter, files);
+    return uploader.uploadFiles(files).then(() => {
+      logger.info(`${green('OSS 上传完成\n')}`);
+    })
+    .catch((err) => {
+      logger.info(`${red('OSS 上传出错')}::: ${red(err.code)}-${red(err.name)}: ${red(err.message)}`)
+    });
   }))
 }
 
 class Upload {
-  constructor(adapter, files, options = {}) {
+  constructor(adapter, files) {
     this.adapter = adapter;
-    this.config = options;
     this.files = files;
     this.idx = 1;
     this.fileCount = files.length;
@@ -40,20 +44,21 @@ class Upload {
     return '';
   }
   uploadFiles() {
-    let i = 0;
+    let i = 1;
     const { fileCount } = this;
     return Promise.all(this.files.map((file) => {
       // const uploadName = `${this.calcPrefix()}/${file.name}`.replace('//', '/');
-      if (this.config.existCheck !== true) {
+      if (config.existCheck !== true) {
         return this.uploadFile(file, i++)
       } else {
         return this.adapter.checkFile(file).then(res => {
           const arr = (res.objects || []).filter(item => item.name === file.to)
           if (arr && arr.length > 0) {
-            const timeStr = getTimeStr(new Date(res.objects[0].lastModified))
-            logger.info(`${green('已存在,免上传')} (上传于 ${timeStr}) ${++i}/${fileCount}: ${file.to}`)
+            // const timeStr = getTimeStr(new Date(res.objects[0].lastModified));
+            const timeStr = new Date(+new Date(res.objects[0].lastModified) + 28800000).toJSON().substr(0, 19).replace('T', ' ');
+            logger.info(`${green('已存在,免上传')} (上传于 ${timeStr}) ${i++}/${fileCount}: ${file.to}`)
           } else {
-            throw new Error('not exist & need upload')
+            throw new Error('not exist & need upload');
           }
         }).catch((err) => {
           // 覆盖上传
@@ -67,7 +72,7 @@ class Upload {
       const { from, to } = file;
       file.$retryTime = 0;
       const self = this;
-      const { idx, fileCount, adapter } = this;
+      const { fileCount, adapter } = this;
       function uploadAction() {
         file.$retryTime++;
         logger.info(`开始上传 ${idx}/${fileCount}: ${file.$retryTime > 1 ? '第' + (file.$retryTime - 1) + '次重试' : ''}`, file.to);
@@ -76,13 +81,15 @@ class Upload {
             logger.info(`上传成功 ${idx}/${fileCount}: ${file.to}`)
             resolve();
           }).catch(err => {
-            if (file.$retryTime <= self.config.retryTimes) {
+            // console.log(err);
+            if (file.$retryTime <= config.retryTimes) {
               uploadAction();
             } else {
               reject(err);
             }
           })
       }
+      uploadAction();
     });
   }
 }

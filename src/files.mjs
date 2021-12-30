@@ -25,22 +25,23 @@ const walk = (from) => {
 export async function getFiles(source, target, options) {
   const from = first(dirGlob.sync(source));
   return walk(from).then(res => {
-    const result = res.filter((file) => {
+    const arr = res.filter((file) => {
       // 过滤文件
       if (!options.site && config.excludeDeploy.test(file)) return false;
       if (config.exclude.test(file)) return false;
       return true;
-    }).map((file, index) => {
-      // console.log(file);
+    });
+    const result = arr.map((file, index) => {
       const fullPath = path.resolve('.', file);
-      let to = path.join(target, file.replace(path.dirname(from), ''));
+      let to = path.join(target, file);
       if (to.indexOf('/') === 0) to.replace('/', '');
       return {
         isFile: isFileSync(fullPath),
         from: fullPath,
         to,
       }
-    })
-    return result;
+    });
+    // 需要过滤掉目录
+    return result.filter((file) => file.isFile);
   });
 }

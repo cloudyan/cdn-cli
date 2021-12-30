@@ -22,9 +22,6 @@ program
   .argument('[target]', 'Select the target path to be deployed')
   .option('-s, --site', 'Deploy as a site')
   .action((source, target, options) => {
-    if (options.site) {
-      console.log('站点部署模式'); // 修改配置项
-    }
     deployAction(source, target, options);
   })
 

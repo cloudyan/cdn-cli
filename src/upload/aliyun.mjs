@@ -6,7 +6,7 @@ export class Aliyun {
   }
   uploadFile(file, options) {
     const { from, to } = file;
-    return this.client.put(to, from);
+    return this.client.put(to, from, {});
   }
   checkFile(file) {
     return this.client.list({
