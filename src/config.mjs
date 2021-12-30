@@ -1,9 +1,12 @@
-export const defaultConfig = {
-  auth: {
-    accessKeyId: '',
-    accessKeySecret: '',
-    bucket: '',
-    region: '',
+
+export const config = {
+  auths: {
+    aliyun: {
+
+    },
+    cloudai: {
+
+    },
   },
   retryTimes: 3, // 重试次数: number(>=0),
   existCheck: true, // false: 直接上传; true: 先检测,若已存在则不重新上传(不报错)

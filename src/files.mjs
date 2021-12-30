@@ -4,7 +4,7 @@ import glob from 'glob';
 import dirGlob from 'dir-glob';
 import { first } from 'lodash-es';
 import { isFileSync } from './utils.mjs';
-import { defaultConfig } from './config.mjs';
+import { config } from './config.mjs';
 
 /**
  * 遍历目录
@@ -27,8 +27,8 @@ export async function getFiles(source, target, options) {
   return walk(from).then(res => {
     const result = res.filter((file) => {
       // 过滤文件
-      if (!options.site && defaultConfig.excludeDeploy.test(file)) return false;
-      if (defaultConfig.exclude.test(file)) return false;
+      if (!options.site && config.excludeDeploy.test(file)) return false;
+      if (config.exclude.test(file)) return false;
       return true;
     }).map((file, index) => {
       // console.log(file);
