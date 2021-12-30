@@ -31,9 +31,10 @@ export async function getFiles(source, target, options) {
       if (config.exclude.test(file)) return false;
       return true;
     });
+    const fixTo = from === '**' ? f => f : f => f.replace(path.dirname(from), '');
     const result = arr.map((file, index) => {
       const fullPath = path.resolve('.', file);
-      let to = path.join(target, file);
+      let to = path.join(target, fixTo(file));
       if (to.indexOf('/') === 0) to.replace('/', '');
       return {
         isFile: isFileSync(fullPath),
