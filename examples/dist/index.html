@@ -5,15 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>测试资源加载时间</title>
+    <meta name="keywords" content="CDN, resource-timing">
+    <meta name="description" content="CDN 测试资源加载时间">
     <!-- link -->
-    <link rel="stylesheet" href="./static/css/style.css" />
+    <link rel="preload" href="./static/font/number.otf" as="font" crossorigin>
+    <link rel="stylesheet" href="./static/css/style.css" as="style">
   </head>
   <body>
     <h1>Loading...</h1>
     <!-- font -->
-    <h2 class="myfont" title="自定义字体">1234567890</h2>
+    <h2 class="myfont" title="自定义字体">21234567890</h2>
     <!-- img -->
-    <img class="image" src="./static/img/resource-timing.png" />
+    <img class="image" src="./static/img/resource-timing.png" width="499" height="260" alt="resource-timing"/>
     <!-- svg 同 img -->
     <!-- <img src="./static/svg/resource-timing.svg" /> -->
 

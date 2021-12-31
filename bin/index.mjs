@@ -20,7 +20,8 @@ program
   .command('deploy')
   .argument('[source]', 'Select the files to be deployed')
   .argument('[target]', 'Select the target path to be deployed')
-  .option('-s, --site', 'Deploy as a site')
+  .option('-s, --site', 'Site deployment mode')
+  .option('-c, --check', 'Upload preview check')
   .action((source, target, options) => {
     deployAction(source, target, options);
   })

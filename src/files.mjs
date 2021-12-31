@@ -43,6 +43,7 @@ export async function getFiles(source, target, options) {
       }
     });
     // 需要过滤掉目录
+    // 排序, 将 html 文件单独处理排序在最后
     return result.filter((file) => file.isFile);
   });
 }

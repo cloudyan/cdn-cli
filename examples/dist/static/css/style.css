@@ -1,0 +1,20 @@
+
+/*
+  - https://stackoverflow.com/questions/47276269/link-rel-preload-has-an-unsupported-type-value-fonts-preload
+  - https://www.fontspring.com/support/font-file-formats
+*/
+@font-face {
+  font-family: 'myfont';
+  src: local('PingFang SC'), local('sans-serif'), url('../font/number.otf');
+  font-display: swap;
+}
+
+.myfont {
+  font-family: 'myfont';
+  font-size: 30px;
+  color: red;
+}
+
+img {
+  /* width: 100%; */
+}

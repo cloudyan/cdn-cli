@@ -27,8 +27,12 @@ async function deployAction(from = './', to = './cdn', options = {}) {
       console.log('\n当前为: 站点部署模式\n'); // 修改配置项
     }
 
-    // console.log(files);
-    upload(files);
+    if (options.check) {
+      console.log(files);
+      process.exit(1);
+    } else {
+      upload(files);
+    }
   });
 }
 

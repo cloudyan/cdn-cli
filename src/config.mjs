@@ -21,5 +21,13 @@ export const config = {
   removeMode: true,
   gzip: true,
   envPrefix: '',
-  options: undefined
+  // https://help.aliyun.com/document_detail/31913.html
+  // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching
+  options: {
+    headers: {
+      // 'Cache-Control': 'max-age=31536000',
+      // Expires: '', // 格式 2022-10-12T00:00:00.000Z
+      // 'Content-Encoding': 'gzip'
+    }
+  },
 }

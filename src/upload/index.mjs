@@ -24,6 +24,7 @@ export async function upload(files) {
     const uploadAdapter = uploadAdapters[auth.type];
     const adapter = new uploadAdapter(auth);
     const uploader = new Upload(adapter, files);
+    logger.info(`${green('\nOSS 上传开始......')}`);
     return uploader.uploadFiles(files).then(() => {
       logger.info(`${green('OSS 上传完成\n')}`);
     })
@@ -48,11 +49,11 @@ class Upload {
     const { fileCount } = this;
     return Promise.all(this.files.map((file) => {
       // const uploadName = `${this.calcPrefix()}/${file.name}`.replace('//', '/');
-      if (config.existCheck !== true) {
+      if (/\.html/.test(file.to) || config.existCheck !== true) {
         return this.uploadFile(file, i++)
       } else {
         return this.adapter.checkFile(file).then(res => {
-          const arr = (res.objects || []).filter(item => item.name === file.to)
+          const arr = (res.objects || []).filter(item => item.name === file.to);
           if (arr && arr.length > 0) {
             // const timeStr = getTimeStr(new Date(res.objects[0].lastModified));
             const timeStr = new Date(+new Date(res.objects[0].lastModified) + 28800000).toJSON().substr(0, 19).replace('T', ' ');
@@ -76,7 +77,7 @@ class Upload {
       function uploadAction() {
         file.$retryTime++;
         logger.info(`开始上传 ${idx}/${fileCount}: ${file.$retryTime > 1 ? '第' + (file.$retryTime - 1) + '次重试' : ''}`, file.to);
-        adapter.uploadFile(file, {})
+        adapter.uploadFile(file, self.getOptions(file))
           .then((result) => {
             logger.info(`上传成功 ${idx}/${fileCount}: ${file.to}`)
             resolve();
@@ -91,6 +92,14 @@ class Upload {
       }
       uploadAction();
     });
+  }
+  getOptions(file) {
+    const { to } = file;
+    const options = JSON.parse(JSON.stringify(config.options || {headers: {}}));
+    if (!/\.html/.test(to)) {
+      options.headers['Cache-Control'] = 'max-age=31536000';
+    }
+    return options;
   }
 }
 
