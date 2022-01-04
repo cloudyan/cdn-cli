@@ -1,1 +1,1 @@
-console.log('resource js 3');
+console.log('resource js 6');

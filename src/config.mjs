@@ -2,7 +2,6 @@
 export const config = {
   auths: {
     aliyun: {
-
     },
     cloudai: {
 
