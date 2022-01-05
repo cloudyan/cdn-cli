@@ -1,4 +1,4 @@
-
+// default config
 export const config = {
   auths: {
     aliyun: {
@@ -20,7 +20,6 @@ export const config = {
   ignoreError: false,
   removeMode: true,
   gzip: true,
-  envPrefix: '',
   // https://help.aliyun.com/document_detail/31913.html
   // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching
   options: {

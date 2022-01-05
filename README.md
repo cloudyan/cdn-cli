@@ -1,6 +1,13 @@
 # cdn-cli 工具
 
-功能列表
+## 使用
+
+```bash
+npx pnpm add --global
+cdn deploy [source] [target]
+```
+
+## 功能列表
 
 配置从环境变量里取
 
@@ -10,6 +17,7 @@
   - `--site` 为部署站点模式
   - `--preview` 仅做上传预览
   - `--force` 强制覆盖上传
+  - 目前配置怎么使用, 可通过 ~/.cdn.config.js
 - 误传检测
   - 不能再 package.json 文件夹下直接默认操作
 - `refresh <target_path>` 刷新 cdn
@@ -18,6 +26,8 @@
   - 从安全方面考虑, 不应该使用 Ak/Sk 配置, 而应该使用 STS(Security Token Service，临时授权访问) 来操作
   - https://help.aliyun.com/document_detail/28801.html
   - 这里可以尝试通过 serverless 来提供 STS 服务
+  - `--token <token_url>` 通过 token 上传 oss
+
 
 配置
 
