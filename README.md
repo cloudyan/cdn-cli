@@ -18,8 +18,6 @@
   - 从安全方面考虑, 不应该使用 Ak/Sk 配置, 而应该使用 STS(Security Token Service，临时授权访问) 来操作
   - https://help.aliyun.com/document_detail/28801.html
   - 这里可以尝试通过 serverless 来提供 STS 服务
-  - `--token <token_url>` 通过 token 上传 oss
-
 
 配置
 
