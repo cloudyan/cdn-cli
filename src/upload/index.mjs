@@ -60,12 +60,14 @@ class Upload {
         return this.uploadFile(file, i++)
       } else {
         return this.adapter.checkFile(file).then(res => {
+          // console.log(res.objects);
           const arr = (res.objects || []).filter(item => item.name === file.to);
           if (arr && arr.length > 0) {
             // const timeStr = getTimeStr(new Date(res.objects[0].lastModified));
             const timeStr = new Date(+new Date(res.objects[0].lastModified) + 28800000).toJSON().substr(0, 19).replace('T', ' ');
             logger.info(`${green('已存在,免上传')} (上传于 ${timeStr}) ${i++}/${fileCount}: ${file.to}`)
           } else {
+            // console.log(file.to, 'not exist & need upload');
             throw new Error('not exist & need upload');
           }
         }).catch((err) => {

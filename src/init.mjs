@@ -34,7 +34,7 @@ export function getLocalConfig() {
   .catch(() => {
     return import(configTargetPath);
   }).then(() => {
-    console.log('\n不存在配置文件\n');
+    console.log('\n无本地配置\n');
     return {default: {}}
   });
 }
