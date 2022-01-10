@@ -17,6 +17,9 @@ cdn deploy [source] [target]
   - `--site` 为部署站点模式
   - `--preview` 仅做上传预览
   - `--force` 强制覆盖上传
+  - `--headers` 设置响应头(需要规则校验, 错误的格式不应该被提交)
+    - `cache-control: max-age=<seconds>`max-age=31536000
+    - `cache-control: no-cache`
 - 配置应用用 STS, 未支持时, 先使用 ~/.cdn.config.js
   - `init` 初始化配置文件 (本地使用)
 - 误传检测
@@ -29,6 +32,7 @@ cdn deploy [source] [target]
   - 这里可以尝试通过 serverless 来提供 STS 服务
   - `--token <token_url>` 通过 token 上传 oss
 - 接入发布系统
+  - 可使用环境变量配置 Ak/Sk 等
 
 
 配置

@@ -12,6 +12,12 @@ function genEnvConfig(type) {
   }
 }
 
+function getHeaders(types) {
+  return {
+    'Cache-Control': 'max-age=31536000',
+  }
+}
+
 function getConfig() {
   // 获取本地配置
 

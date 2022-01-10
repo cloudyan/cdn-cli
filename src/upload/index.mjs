@@ -105,8 +105,9 @@ class Upload {
   }
   getOptions(file) {
     const { to } = file;
-    const options = JSON.parse(JSON.stringify(config.options || {headers: {}}));
+    let options = {headers: {}};
     if (!/\.html/.test(to)) {
+      options = JSON.parse(JSON.stringify(config.options || {headers: {}}));
       options.headers['Cache-Control'] = 'max-age=31536000';
     }
     return options;
