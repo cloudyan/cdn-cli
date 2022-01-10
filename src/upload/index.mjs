@@ -61,6 +61,7 @@ class Upload {
       } else {
         return this.adapter.checkFile(file).then(res => {
           // console.log(res.objects);
+          // file.to 不能以 / 开头, 否则 checkFile 不到文件
           const arr = (res.objects || []).filter(item => item.name === file.to);
           if (arr && arr.length > 0) {
             // const timeStr = getTimeStr(new Date(res.objects[0].lastModified));

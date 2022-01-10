@@ -21,6 +21,7 @@ function securityCheck(files, from) {
 
 async function deployAction(from = './', to = './cdn', options = {}) {
   // 先检查 auth 配置, 如果配置不存在, 直接报错
+  to = to.replace(/^\//, ''); // to 不能以 / 开头
 
   // console.log(from, to);
   getFiles(from, to, options).then(files => {
