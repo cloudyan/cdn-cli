@@ -4,6 +4,7 @@ import chalk from 'chalk';
 import { getFiles } from './files.mjs';
 import { config } from './config.mjs';
 import { upload } from './upload/index.mjs';
+
 // import { __dirname } from './utils.mjs';
 
 // const configPath = path.resolve(__dirname, '../config.json');
@@ -19,6 +20,8 @@ function securityCheck(files, from) {
 }
 
 async function deployAction(from = './', to = './cdn', options = {}) {
+  // 先检查 auth 配置, 如果配置不存在, 直接报错
+
   // console.log(from, to);
   getFiles(from, to, options).then(files => {
     securityCheck(files, from);

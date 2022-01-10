@@ -4,6 +4,13 @@ import { Aliyun } from './aliyun.mjs';
 import { Qiniu } from './qiniu.mjs';
 import { Tencent } from './tencent.mjs';
 import * as logger from '../logger.mjs';
+import { getLocalConfig } from '../init.mjs';
+import { merge } from 'lodash-es';
+
+await getLocalConfig().then(res => {
+  merge(config.auths, res.default);
+  // console.log('auths', config.auths);
+})
 
 const { red, green } = chalk;
 

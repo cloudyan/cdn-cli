@@ -3,6 +3,7 @@
 import { Command } from 'commander';
 import pkg from '../package.json';
 import updateCheck from '../src/update.mjs';
+import { initConfig, clearConfig } from '../src/init.mjs';
 import deployAction from '../src/deploy.mjs';
 
 // https://github.com/tj/commander.js/blob/HEAD/Readme_zh-CN.md
@@ -14,6 +15,20 @@ program
   .description('Check the @deepjs/cdn-cli version.')
   .action(() => {
     updateCheck()
+  })
+
+program
+  .command('init')
+  .description('Initial configuration.')
+  .action(() => {
+    initConfig()
+  })
+
+program
+  .command('clear')
+  .description('Clear configuration.')
+  .action(() => {
+    clearConfig()
   })
 
 program
