@@ -17,14 +17,14 @@ cdn deploy [source] [target]
   - `--site` 为部署站点模式
   - `--preview` 仅做上传预览
   - `--force` 强制覆盖上传
-  - `--headers` 设置响应头(需要规则校验, 错误的格式不应该被提交)
+  - [ ] `--headers` 设置响应头(需要规则校验, 错误的格式不应该被提交)
     - `cache-control: max-age=<seconds>`max-age=31536000
     - `cache-control: no-cache`
-- 配置应用用 STS, 未支持时, 先使用 ~/.cdn.config.js
+- 配置应用用 STS, 未支持时, 先使用 ~/.cdn.config.js 或环境变量支持
   - `init` 初始化配置文件 (本地使用)
 - 误传检测
   - 不能再 package.json 文件夹下直接默认操作
-- `refresh <target_path>` 刷新 cdn
+- [ ] `refresh <target_path>` 刷新 cdn
   - 可刷新 dir 或 file 路径, 支持多个
 - 安全管控
   - 从安全方面考虑, 不应该使用 Ak/Sk 配置, 而应该使用 STS(Security Token Service，临时授权访问) 来操作
@@ -33,7 +33,8 @@ cdn deploy [source] [target]
   - `--token <token_url>` 通过 token 上传 oss
 - 接入发布系统
   - 可使用环境变量配置 Ak/Sk 等
-
+- 关于浏览
+  - 可以使用 [oss-browser](https://github.com/aliyun/oss-browser/blob/develop/README-CN.md)
 
 配置
 
