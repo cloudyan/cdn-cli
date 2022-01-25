@@ -9,6 +9,12 @@
     "cdn-cli": "./bin/index.mjs",
     "cdn": "./bin/index.mjs"
   },
+  "files": [
+    "bin",
+    "lib",
+    "src",
+    "templates"
+  ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -38,5 +44,8 @@
     "ora": "6.0.1",
     "qiniu": "7.4.0",
     "update-notifier": "5.1.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }

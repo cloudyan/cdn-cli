@@ -16,9 +16,9 @@ cdn deploy [source] [target]
   - 限制上传文件到根目录（但不限制上传目录到根目录）
   - `--site` 为部署站点模式
   - `--preview` 仅做上传预览
-  - `--force` 强制覆盖上传
+  - `--force` 强制覆盖上传(功能关闭)
   - [ ] `--headers` 设置响应头(需要规则校验, 错误的格式不应该被提交)
-    - `cache-control: max-age=<seconds>`max-age=31536000
+    - `cache-control: max-age=<seconds>` max-age=31536000
     - `cache-control: no-cache`
 - 配置应用用 STS, 未支持时, 先使用 ~/.cdn.config.js 或环境变量支持
   - `init` 初始化配置文件 (本地使用)
@@ -43,6 +43,20 @@ cdn deploy [source] [target]
 
 访问域名和空间无强绑定关系
 
+## 常见问题
+
+如果你想禁用 pnpm 管理包, 可以添加以下 script
+
+```json
+"scripts": {
+  "preinstall": "npx only-allow pnpm",
+}
+```
+
+如果 node 版本比较低(node@version < 14), 则不能使用
+
+此时需要使用 commonjs 版本
+
 参考:
 
--
+- [前端CLI脚手架思路解析](https://juejin.cn/post/6879265583205089287)
