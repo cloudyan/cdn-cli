@@ -43,5 +43,8 @@
     "ora": "6.0.1",
     "qiniu": "7.4.0",
     "update-notifier": "5.1.0"
+  },
+  "engines": {
+    "node": "<14"
   }
 }
