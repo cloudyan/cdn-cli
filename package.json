@@ -1,0 +1,47 @@
+{
+  "name": "@deepjs/cdn-cli",
+  "version": "0.0.1",
+  "description": "上传资源或部署站点到 cdn",
+  "type": "commonjs",
+  "main": "./bin/index.js",
+  "bin": {
+    "cdn-cli": "./bin/index.js",
+    "cdn": "./bin/index.js"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "src",
+    "templates"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "keywords": [
+    "cdn"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ali-oss": "6.16.0",
+    "chalk": "^4.1.2",
+    "co": "4",
+    "commander": "8.3.0",
+    "dir-glob": "3.0.1",
+    "download": "8.0.0",
+    "fs-extra": "10.0.0",
+    "glob": "7.2.0",
+    "handlebars": "4.7.7",
+    "inquirer": "8.2.0",
+    "lodash": "^4.17.21",
+    "lodash-es": "4.17.21",
+    "log-symbols": "^4.1.0",
+    "ora": "6.0.1",
+    "qiniu": "7.4.0",
+    "update-notifier": "5.1.0"
+  }
+}
