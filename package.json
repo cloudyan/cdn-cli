@@ -1,6 +1,6 @@
 {
   "name": "@deepjs/cdn-cli",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "上传资源或部署站点到 cdn",
   "type": "commonjs",
   "main": "./bin/index.js",
