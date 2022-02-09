@@ -1,11 +1,11 @@
 import logSymbols from 'log-symbols';
 import path from 'path';
 import chalk from 'chalk';
-import { getFiles } from './files.mjs';
-import { config } from './config.mjs';
-import { upload } from './upload/index.mjs';
+import { getFiles } from './files.js';
+import { config } from './config.js';
+import { upload } from './upload/index.js';
 
-// import { __dirname } from './utils.mjs';
+// import { __dirname } from './utils.js';
 
 // const configPath = path.resolve(__dirname, '../config.json');
 

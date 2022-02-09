@@ -2,9 +2,9 @@
 
 import { Command } from 'commander';
 import pkg from '../package.json';
-import updateCheck from '../src/update.mjs';
-import { initConfig, clearConfig } from '../src/init.mjs';
-import deployAction from '../src/deploy.mjs';
+import updateCheck from '../src/update.js';
+import { initConfig, clearConfig } from '../src/init.js';
+import deployAction from '../src/deploy.js';
 
 // https://github.com/tj/commander.js/blob/HEAD/Readme_zh-CN.md
 const program = new Command();

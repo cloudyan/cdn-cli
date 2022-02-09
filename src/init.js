@@ -1,9 +1,9 @@
 import { resolve } from 'path';
 import fs from 'fs';
-import { checkFileExist, copyFileSync, __dirname } from './utils.mjs';
+import { checkFileExist, copyFileSync, __dirname } from './utils.js';
 
-const configTplPath = resolve(__dirname, '../templates/cdn.config.mjs');
-const configTargetPath = resolve(process.env.HOME, '.cdn.config.mjs');
+const configTplPath = resolve(__dirname, '../templates/cdn.config.js');
+const configTargetPath = resolve(process.env.HOME, '.cdn.config.js');
 // console.log(process.env);
 // console.log(configTargetPath);
 

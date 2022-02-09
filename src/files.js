@@ -3,8 +3,8 @@ import * as path from 'path';
 import glob from 'glob';
 import dirGlob from 'dir-glob';
 import { first } from 'lodash-es';
-import { isFileSync } from './utils.mjs';
-import { config } from './config.mjs';
+import { isFileSync } from './utils.js';
+import { config } from './config.js';
 
 /**
  * 遍历目录

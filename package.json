@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "description": "上传资源或部署站点到 cdn",
   "type": "module",
-  "main": "./bin/index.mjs",
-  "module": "./bin/index.mjs",
+  "main": "./bin/index.js",
+  "module": "./bin/index.js",
   "bin": {
-    "cdn-cli": "./bin/index.mjs",
-    "cdn": "./bin/index.mjs"
+    "cdn-cli": "./bin/index.js",
+    "cdn": "./bin/index.js"
   },
   "files": [
     "bin",

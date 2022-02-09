@@ -1,10 +1,10 @@
 import chalk from 'chalk';
-import { config } from '../config.mjs';
-import { Aliyun } from './aliyun.mjs';
-import { Qiniu } from './qiniu.mjs';
-import { Tencent } from './tencent.mjs';
-import * as logger from '../logger.mjs';
-import { getLocalConfig } from '../init.mjs';
+import { config } from '../config.js';
+import { Aliyun } from './aliyun.js';
+import { Qiniu } from './qiniu.js';
+import { Tencent } from './tencent.js';
+import * as logger from '../logger.js';
+import { getLocalConfig } from '../init.js';
 import { merge } from 'lodash-es';
 
 await getLocalConfig().then(res => {
