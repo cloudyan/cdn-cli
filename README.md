@@ -53,10 +53,13 @@ cdn deploy [source] [target]
 }
 ```
 
-如果 node 版本比较低(node@version < 14), 则不能使用
+如果 node 版本比较低(node@version < 14), 则不能使用 `@deepjs/cdn-cli@2`
 
-此时需要使用 commonjs 版本
+此时需要使用 commonjs 版本 `@deepjs/cdn-cli@1`
 
 参考:
 
 - [前端CLI脚手架思路解析](https://juejin.cn/post/6879265583205089287)
+- https://www.npmjs.com/package/cdn-cli
+- https://www.npmjs.com/package/webpack-alioss-plugin
+- https://github.com/aikefang/qiniu-tool
