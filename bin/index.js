@@ -33,8 +33,8 @@ program
 
 program
   .command('deploy')
-  .argument('[source]', 'Select the files to be deployed')
-  .argument('[target]', 'Select the target path to be deployed')
+  .argument('[source]', 'Select the files to be deployed', './')
+  .argument('[target]', 'Select the target path to be deployed', './cdn')
   .option('-s, --site', 'Site deployment mode')
   .option('-p, --preview', 'Upload preview check')
   .option('-f, --force', 'Force overwrite upload')
