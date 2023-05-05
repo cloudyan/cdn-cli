@@ -8,15 +8,15 @@
     <meta name="keywords" content="CDN, resource-timing">
     <meta name="description" content="CDN 测试资源加载时间">
     <!-- link -->
-    <link rel="preload" href="./static/font/number.otf" as="font" crossorigin>
-    <link rel="stylesheet" href="./static/css/style.css" as="style">
+    <link rel="preload" href="/cdn/dist/static/font/number.otf" as="font" crossorigin>
+    <link rel="stylesheet" href="/cdn/dist/static/css/style.css" as="style">
   </head>
   <body>
     <h1>Loading...</h1>
     <!-- font -->
     <h2 class="myfont" title="自定义字体">61234567890</h2>
     <!-- img -->
-    <img class="image" src="./static/img/resource-timing.png" width="499" height="260" alt="resource-timing"/>
+    <img class="image" src="/cdn/dist/static/img/resource-timing.png" width="499" height="260" alt="resource-timing"/>
     <!-- svg 同 img -->
     <!-- <img src="./static/svg/resource-timing.svg" /> -->
 
@@ -28,11 +28,11 @@
     </ul>
 
     <!-- script -->
-    <script src="./static/libs/zepto.min.js"></script>
-    <script type="module" src="./static/js/index.js"></script>
+    <script src="/cdn/dist/static/libs/zepto.min.js"></script>
+    <script type="module" src="/cdn/dist/static/js/index.js"></script>
     <script type="module">
       // import { getResourceTiming } from '../../sdk/performance/resource-timing.js';
-      import { log } from './static/js/es.mjs';
+      import { log } from '/cdn/dist/static/js/es.mjs';
       log('es.mjs');
 
       // const logData = () => {
@@ -53,6 +53,6 @@
       //   }
       // });
     </script>
-    <script type="module" src="./static/js/render-after-error.js"></script>
+    <script type="module" src="/cdn/dist/static/js/render-after-error.js"></script>
   </body>
 </html>

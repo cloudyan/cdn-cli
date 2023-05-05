@@ -5,6 +5,9 @@
 ```bash
 npx pnpm add --global
 cdn deploy [source] [target]
+
+# 示例
+npx cdn-cli deploy ./examples/dist ./cdn/dist
 ```
 
 ## 功能列表
