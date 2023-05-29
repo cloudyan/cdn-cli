@@ -15,6 +15,9 @@
     "templates"
   ],
   "scripts": {
+    "down": "node ./scripts/download.js",
+    "deploy": "cdn-cli deploy ./source/libs ./libs",
+    "list": "node ./scripts/list.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "publishConfig": {
