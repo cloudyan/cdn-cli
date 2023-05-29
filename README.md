@@ -8,6 +8,8 @@ cdn deploy [source] [target]
 
 # 本地测试
 ./bin/index.js deploy ./examples/dist ./cdn/dist
+
+npx cdn-cli deploy ./examples/dist ./cdn/dist
 ```
 
 ## 功能列表
