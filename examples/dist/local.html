@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>测试资源加载时间</title>
+    <meta name="keywords" content="CDN, resource-timing">
+    <meta name="description" content="CDN 测试资源加载时间">
+    <!-- link -->
+    <link rel="preload" href="//s1.cloudai.net/cdn/dist/static/font/number.otf" as="font" crossorigin>
+    <link rel="stylesheet" href="//s1.cloudai.net/cdn/dist/static/css/style.css" as="style">
+  </head>
+  <body>
+    <h1>Loading...</h1>
+    <!-- font -->
+    <h2 class="myfont" title="自定义字体">61234567890</h2>
+    <!-- img -->
+    <img class="image" src="//s1.cloudai.net/cdn/dist/static/img/resource-timing.png" width="499" height="260" alt="resource-timing"/>
+    <!-- svg 同 img -->
+    <!-- <img src="./static/svg/resource-timing.svg" /> -->
+
+    <button id="getResourceTiming">获取资源加载时间</button>
+    <p>给出一个资源加载的log 数据，分析优化方案</p>
+    <ul>
+      <li>当前页面1</li>
+      <li>当前资源节点位置</li>
+    </ul>
+
+    <!-- script -->
+    <script src="//s1.cloudai.net/cdn/dist/static/libs/zepto.min.js"></script>
+    <script type="module" src="//s1.cloudai.net/cdn/dist/static/js/index.js"></script>
+    <script type="module">
+      // import { getResourceTiming } from '../../sdk/performance/resource-timing.js';
+      import { log } from '//s1.cloudai.net/cdn/dist/static/js/es.mjs';
+      log('es.mjs');
+
+      // const logData = () => {
+      //   getResourceTiming(data => {
+      //     console.log(JSON.stringify(data, null, 2));
+      //   }, {debug: true});
+      // }
+
+      // const domBtn = document.getElementById('getResourceTiming');
+
+      // domBtn.addEventListener('click', logData);
+      // window.addEventListener('unload', logData, false);
+
+      // document.addEventListener('visibilitychange', function() {
+      //   if (document.visiblityState === 'hidden') {
+      //     // var sessionData = buildSessionReport();
+      //     // navigator.sendBeacon(`${reportUrl}/log`, sessionData);
+      //   }
+      // });
+    </script>
+    <script type="module" src="//s1.cloudai.net/cdn/dist/static/js/render-after-error.js"></script>
+  </body>
+</html>
