@@ -1,5 +1,5 @@
-import Oss from 'ali-oss';
 import type { PutObjectOptions } from 'ali-oss';
+import Oss from 'ali-oss';
 import * as logger from '../logger';
 
 class Aliyun implements Upload {
@@ -15,7 +15,7 @@ class Aliyun implements Upload {
   }
 
   private put(file: File): Promise<void> {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const putObjectOptions: PutObjectOptions = file.isNoCache
         ? {
             headers: {
@@ -30,13 +30,17 @@ class Aliyun implements Upload {
         }
         logger.uploadFail(file);
         console.log(result);
-        process.exit(1);
+        reject(new Error(`Failed to upload ${file.to}`));
       });
     });
   }
 
-  public upload(files: File[]): Promise<void> {
-    return Promise.all(files.map((file) => this.put(file))).then(() => {});
+  public async upload(files: File[]): Promise<void> {
+    try {
+      await Promise.all(files.map((file) => this.put(file)));
+    } catch (error) {
+      throw new Error(`Upload failed: ${error.message}`);
+    }
   }
 }
 

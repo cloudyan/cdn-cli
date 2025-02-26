@@ -9,3 +9,4 @@ yarn-error.log*
 .DS_Store
 
 !templates/cdn.config.js
+cdn.config.js

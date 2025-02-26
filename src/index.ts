@@ -1,5 +1,8 @@
-import { setConfig, config } from './config';
+import { config, setConfig } from './config';
 import { upload } from './utils';
+
+// 取消监听器数量限制
+process.setMaxListeners(0);
 
 const deploy = async (environment: string): Promise<any> => {
   await setConfig(environment);

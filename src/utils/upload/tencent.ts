@@ -17,7 +17,7 @@ class Tencent implements Upload {
   }
 
   put(file: File): Promise<void> {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.client.putObject(
         {
           Bucket: this.bucket,
@@ -27,22 +27,26 @@ class Tencent implements Upload {
           ContentLength: fs.statSync(file.from).size,
           CacheControl: file.isNoCache ? 'no-cache' : undefined,
         },
-        (_, data) => {
+        (err, data) => {
           if (data.statusCode === 200) {
             logger.uploadSuccess(file);
             resolve();
             return;
           }
           logger.uploadFail(file);
-          logger.error(_.message);
-          process.exit(1);
+          logger.error(err.message);
+          reject(new Error(`Failed to upload ${file.to}: ${err.message}`));
         },
       );
     });
   }
 
-  public upload(files: File[]): Promise<void> {
-    return Promise.all(files.map((file) => this.put(file))).then(() => {});
+  public async upload(files: File[]): Promise<void> {
+    try {
+      await Promise.all(files.map((file) => this.put(file)));
+    } catch (error) {
+      throw new Error(`Upload failed: ${error.message}`);
+    }
   }
 }
 

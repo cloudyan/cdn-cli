@@ -22,27 +22,36 @@ class Qiniu implements Upload {
   }
 
   private put(file: File): Promise<void> {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.client.putFile(
         this.uploadToken,
-        file.to.substring(1),
+        // Fixed to path problems
+        file.to, // file.to.substring(1),
         file.from,
         this.putExtra,
-        (_, respBody, respInfo) => {
+        (err, respBody, respInfo) => {
           if (respInfo?.statusCode === 200) {
             logger.uploadSuccess(file);
             return resolve();
           }
           logger.uploadFail(file);
-          console.log(_?.message);
-          process.exit(1);
+          console.log(err?.message);
+          reject(
+            new Error(
+              `Failed to upload ${file.to}: ${err?.message || 'Unknown error'}`,
+            ),
+          );
         },
       );
     });
   }
 
-  public upload(files: File[]): Promise<void> {
-    return Promise.all(files.map((file) => this.put(file))).then(() => {});
+  public async upload(files: File[]): Promise<void> {
+    try {
+      await Promise.all(files.map((file) => this.put(file)));
+    } catch (error) {
+      throw new Error(`Upload failed: ${error.message}`);
+    }
   }
 }
 

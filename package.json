@@ -1,6 +1,6 @@
 {
-  "name": "cdn-cli",
-  "version": "5.2.3",
+  "name": "@deepjs/cdn-cli",
+  "version": "3.0.0",
   "description": "通过命令行将文件上传至对象存储，支持阿里云、腾讯云以及七牛云",
   "scripts": {
     "build": "tsc",
@@ -9,7 +9,8 @@
   },
   "license": "MIT",
   "bin": {
-    "cdn": "bin/cdn"
+    "cdn": "bin/cdn",
+    "cdn-cli": "bin/cdn"
   },
   "dependencies": {
     "ali-oss": "^6.16.0",
