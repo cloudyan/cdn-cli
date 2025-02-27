@@ -1,5 +1,9 @@
-import { red, yellow, green, white } from 'kleur';
+import { green, red, white, yellow } from 'kleur';
 import { config } from '../config';
+
+export const info = (...message: any) => {
+  console.log(...message);
+};
 
 export const uploadSuccess = (file: Omit<File, 'isLastUpload'>) => {
   const status = green('[成功]'.padEnd(8));
