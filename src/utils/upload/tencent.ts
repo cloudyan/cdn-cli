@@ -105,14 +105,16 @@ class Tencent implements Upload {
         files.map(async (file) => {
           const checkResult = await this.checkFile(file);
           if (file.isNoCache || !checkResult.exists) {
-            return this.put(file);
+            const result = await this.put(file);
+            this.i++;
+            return result;
           } else {
             const timeStr = checkResult.lastModified
               .toJSON()
               .substring(0, 19)
               .replace('T', ' ');
             logger.info(
-              `${green('已存在,免上传')} (上传于 ${timeStr}) ${this.i++}/${
+              `${yellow('已存在,跳过')} (上传于 ${timeStr}) ${this.i++}/${
                 this.fileCount
               }: ${file.to}`,
             );

@@ -44,7 +44,7 @@ class Qiniu implements Upload {
             .substring(0, 19)
             .replace('T', ' ');
           logger.info(
-            `${green('已存在,免上传')} (上传于 ${timeStr}) ${this.i}/${
+            `${green('已存在,免上传')} (上传于 ${timeStr}) ${this.i++}/${
               this.fileCount
             }: ${file.to}`,
           );
@@ -56,6 +56,14 @@ class Qiniu implements Upload {
 
   private put(file: File): Promise<void> {
     return new Promise((resolve, reject) => {
+      // 检查文件是否需要过滤
+      if (file.isNoCache) {
+        logger.info(
+          `${yellow('文件已过滤')} ${this.i++}/${this.fileCount}: ${file.to}`,
+        );
+        return resolve();
+      }
+
       let retryCount = 0;
       const maxRetries = 3; // 默认重试3次
 

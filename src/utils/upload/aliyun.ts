@@ -95,7 +95,9 @@ class Aliyun implements Upload {
       await Promise.all(
         files.map(async (file) => {
           if (file.isNoCache || !(await this.checkFile(file))) {
-            return this.put(file);
+            const result = await this.put(file);
+            this.i++;
+            return result;
           } else {
             const result = await this.client.head(file.to);
             const timeStr = new Date(result.res.headers['last-modified'])
@@ -103,7 +105,7 @@ class Aliyun implements Upload {
               .substring(0, 19)
               .replace('T', ' ');
             logger.info(
-              `${green('已存在,免上传')} (上传于 ${timeStr}) ${this.i++}/${
+              `${yellow('已存在,跳过')} (上传于 ${timeStr}) ${this.i++}/${
                 this.fileCount
               }: ${file.to}`,
             );
