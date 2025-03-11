@@ -39,7 +39,8 @@ npx cdn-cli deploy ./examples/dist ./cdn/dist
 - 接入发布系统
   - 可使用环境变量配置 Ak/Sk 等
 - 关于浏览
-  - 可以使用 [oss-browser](https://github.com/aliyun/oss-browser/blob/develop/README-CN.md)
+  - 阿里云可以使用 [oss-browser](https://github.com/aliyun/oss-browser/blob/develop/README-CN.md)
+  - 七牛可以使用 [kodo-browser](https://developer.qiniu.com/kodo/5972/kodo-browser)
 
 配置
 
