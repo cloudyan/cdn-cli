@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc",
     "test": "cd example && ../bin/cdn deploy debug && cd -",
+    "test1": "cd example && npx cdn-cli deploy debug && cd -",
     "prepare": "husky install"
   },
   "license": "MIT",
