@@ -21,6 +21,7 @@ Query regions failed with HTTP Status Code 631, Body {"error":"no such bucket"}
 1. 短期解决方案：
 
    - 在程序启动时设置更高的监听器限制：
+
      ```js
      process.setMaxListeners(20); // 或更大的数值
      ```
